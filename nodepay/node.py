@@ -176,7 +176,7 @@ class AccountSession:
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "cors-site",
             "Priority": "u=1, i",
-            "Referer": "https://web-srv03.mmserver.cloud/",
+            "Referer": "https://app.nodepay.ai/",
         }
 
         for attempt in range(max_retries):
@@ -271,7 +271,7 @@ class AccountSession:
 
 async def load_tokens():
     try:
-        async with aiofiles.open('../personaldata/userid/node_userid/node_userid.nerodata', 'r') as f:
+        async with aiofiles.open('tokens.txt', 'r') as f:
             tokens_data = await f.read()
             tokens = [line.strip().strip("'\"") for line in tokens_data.splitlines() if line.strip()]
             return tokens
@@ -296,7 +296,7 @@ $$ | \$$ |\$$$$$$  |$$ |  $$ |\$$$$$$  /      $$$$$$$  | $$$$$$  |  $$ |
 |               Telegram: https://t.me/N3R0DEV                            |
 ===========================================================================
 """)
-    print('Starting Bot...')
+    print('Starting program...')
     await asyncio.sleep(3)
     try:
         tokens = await load_tokens()
@@ -309,7 +309,7 @@ $$ | \$$ |\$$$$$$  |$$ |  $$ |\$$$$$$  /      $$$$$$$  | $$$$$$  |  $$ |
         # Keep the program running
         await asyncio.Event().wait()
     except Exception as error:
-        print(f"Bot terminated: {error}")
+        print(f"Program terminated: {error}")
 
 
 if __name__ == '__main__':
