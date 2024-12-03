@@ -271,7 +271,7 @@ class AccountSession:
 
 async def load_tokens():
     try:
-        async with aiofiles.open('tokens.txt', 'r') as f:
+        async with aiofiles.open('../personaldata/userid/node_userid/node_userid.nerodata', 'r') as f:
             tokens_data = await f.read()
             tokens = [line.strip().strip("'\"") for line in tokens_data.splitlines() if line.strip()]
             return tokens
